@@ -120,3 +120,10 @@ def docs_panel(request, pk):
 def people_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     return render(request, 'controlpanel/viewpeople.html', {'initiative': initiative})
+
+@login_required
+def meeting_requests_panel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/viewmeeting_requests.html', {'initiative': initiative})
+
+
