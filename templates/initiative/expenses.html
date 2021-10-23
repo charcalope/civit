@@ -1,25 +1,25 @@
 <div>
-    {% for expense in initiative.getExpenses %}
-    {% if forloop.counter0|divisibleby:2 %}
-    <div class="card" style="background-color:#D3D3D3">
-    {% else %}
-    <div class="card">
-    {% endif %}
-        <p>{{ expense.title }}</p>
-        <p>Amount: {{ expense.amount }}</p>
-        <p>Reported by: {{ expense.reporter }}</p>
-        <p>{{ expense.description }}</p>
-        <div class="tags">Status:
-        {% if expense.approved %}
-            <span class="tag">Approved</span>
-        {% endif %}
-        {% if expense.denied %}
-            <span class="tag">Denied</span>
-        {% endif %}
-        {% if expense.paid %}
-            <span class="tag">Paid</span>
-        {% endif %}
-        </div>
-    </div>
-    {% endfor %}
+
+        <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Reporter</th>
+                                        <th>Title</th>
+                                        <th>Amount</th>
+                                        <th>Approved</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for expense in initiative.getExpenses %}
+                                        <tr>
+                                            <td>{{ expense.date_created }}</td>
+                                            <td>{{ expense.reporter.username }}</td>
+                                            <td>{{ expense.title }}</td>
+                                            <td>${{ expense.amount }}</td>
+                                            <td>{{ expense.approved }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
 </div>

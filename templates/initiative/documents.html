@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div>
+    <table class="table is-fullwidth">
+        <thead>
+            <tr>
+                <th>Date Created</th>
+                <th>Poster</th>
+                <th>Title</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for doc in docs %}
+            <tr>
+                <td>{{ doc.date_created }}</td>
+                <td>{{ doc.posting_organizer }}</td>
+                <td>{{ doc.title }}</td>
+                <td><a href="#">Link</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

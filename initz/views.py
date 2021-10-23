@@ -45,9 +45,12 @@ def create(request):
 @login_required
 def view_public_init(request, pk):
     initiative = Initiative.objects.get(pk=pk)
+    meeting_requests = MeetingRequest.objects.filter(initiative=initiative)
+    docs = Document.objects.filter(initiative=initiative)
     if request.method == "GET":
         initiative.qrcode = generateQRCode("https://www.youtube.com/")
-        return render(request, 'initiative/public_view_init.html', {'initiative': initiative, 'donate_form': DonateForm})
+        return render(request, 'initiative/public_view_init.html', {'initiative': initiative, 'donate_form': DonateForm,
+                                                                    'requests': meeting_requests, 'docs': docs})
     else:
         form = DonateForm(request.POST)
         if form.is_valid():
@@ -72,7 +75,9 @@ def view_status_feed(request, pk):
 
 def view_expenses(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'initiative/expenses.html', {'initiative': initiative})
+    expenses = Expense.objects.filter(initiative=initiative)
+    return render(request, 'initiative/expenses.html', {'initiative': initiative,
+                                                        'expenses': expenses})
 
 def view_documents(request, pk):
     initiative = Initiative.objects.get(pk=pk)
