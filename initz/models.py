@@ -72,3 +72,5 @@ class Expense(models.Model):
     approved = models.BooleanField(default=False)
     denied = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
+
+register(Initiative)
