@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+<div>
+    <div>
+        <div>
+        <div>
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'landing' %}">
+      <b>Civit</b>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="#">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      </div>
+    </div>
+</nav>
+    </div>
+    </div>
+    </div>
+    <div>
+        <div class="columns">
+            <div class="column is-one-quarter" style="padding: 20px; margin-top: 20px">
+                <div class="box" style="border-radius: 7px; background-color: aliceblue">
+                    <aside class="menu">
+  <ul class="menu-list">
+    <li><a>Dashboard</a></li>
+  </ul>
+  <p class="menu-label">
+    Administration
+  </p>
+  <ul class="menu-list">
+    <li>
+      <a>Organizers</a>
+      <ul>
+        <li><a>View Organizers</a></li>
+        <li><a>Add an Organizer</a></li>
+      </ul>
+    </li>
+    <li>
+      <a>Manage Your Expenses</a>
+      <ul>
+        <li><a>Expense Records</a></li>
+        <li><a>Create an Expense</a></li>
+      </ul>
+    </li>
+    <li><a>Documents</a></li>
+    <li><a class="is-active">Status Updates</a></li>
+    <li><a>Meeting Requests</a></li>
+  </ul>
+</aside>
+                </div>
+            </div>
+            <div class="column" style="padding: 20px; margin-top: 20px">
+                <div>
+                    <div class="box" style="background-color: aliceblue">
+                        <h1 class="title">Initiative Title</h1>
+                    </div>
+                    <div class="box">
+                        <div>
+                            <h1 class="title">Status Updates</h1>
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Poster</th>
+                                        <th>Title</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>11/10/21</td>
+                                        <td>Anastasia Spangler</td>
+                                        <td>New Fundraising Goal</td>
+                                        <td><button class="button">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
