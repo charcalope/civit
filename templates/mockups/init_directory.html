@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+<div>
+    <div>
+        <div>
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'landing' %}">
+      <b>Civit</b>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="#">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      </div>
+    </div>
+</nav>
+    </div>
+    </div>
+    <div>
+       <div class="columns">
+           <div class="column is-one-quarter">
+                <div style="padding: 30px">
+                    <div class="box" style="height: 550px">
+                        <h1 class="subtitle">Filters</h1>
+                        <form method="get">
+                            <input type="checkbox" value="a" id="filter-category-a">
+                            <label for="filter-category-a">Category A</label>
+                            <br>
+                            <input type="checkbox" value="b" id="filter-category-b">
+                            <label for="filter-category-b">Category B</label>
+                            <br>
+                            <input type="checkbox" value="c" id="filter-category-c">
+                            <label for="filter-category-c">Category C</label>
+                            <br>
+                            <input type="checkbox" value="d" id="filter-category-d">
+                            <label for="filter-category-d">Category D</label>
+                            <br>
+                            <button type="submit" value="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+           </div>
+           <div class="column">
+                <div style="padding: 30px">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                            <div class="box">
+                                <h1 class="title">Initiative Title</h1>
+                                <h1 class="subtitle">Organized by Firstname Lastname</h1>
+
+                                <p>This is an example description of this initiative.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+    </div>
+</div>
+</body>
+</html>
