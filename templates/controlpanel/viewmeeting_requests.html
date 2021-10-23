@@ -2,6 +2,51 @@
 
 {% block body %}
     <div>
-        <h1>Meeting Requests</h1>
+        <div>
+            <h1>Meeting Requests</h1>
+            <form method="post">
+                {% csrf_token %}
+                <select name="group_id">
+                    {% for group in groups %}
+                        <option value="{{ group.pk }}">{{ group.group_title }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Fetch">
+            </form>
+        </div>
+        <div>
+            {% if packets %}
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Request</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for packet in packets %}
+                                <tr>
+                                    <td>{{ packet.legislator.first_name }}</td>
+                                    <td>{{ packet.legislator.last_name }}</td>
+                                    <td>{{ packet.legislator.email }}</td>
+                                    <td>{{ packet.status }}</td>
+                                    {% if packet.existing_request %}
+                                        <td><a href="#">Request Submitted</a></td>
+                                    {% else %}
+                                        <td><a href="{% url 'createreqind' init_pk=initiative.pk leg_pk=packet.legislator.pk %}">Submit Request</a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>Select a legislative group to see status of meeting requests.</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

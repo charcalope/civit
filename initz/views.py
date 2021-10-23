@@ -3,7 +3,7 @@ from django.urls import path
 from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm
 from django.contrib.auth.decorators import login_required
 
-from .models import Initiative, Donation, Expense, StatusUpdate
+from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, MeetingRequest, Legislator
 
 # Create your views here.
 @login_required
@@ -143,4 +143,57 @@ def people_panel(request, pk):
 @login_required
 def meeting_requests_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/viewmeeting_requests.html', {'initiative': initiative})
+    groups = LegislatorGroup.objects.all()
+
+    if request.method == 'POST':
+        query = request.POST.get('group_id')
+        group = LegislatorGroup.objects.get(pk=query)
+
+        legislators = group.legislators.all()
+
+        packets = []
+
+        for legislator in legislators:
+            new_packet = dict()
+
+            meeting_request_results = MeetingRequest.objects.filter(initiative=initiative, legislator=legislator)
+            if len(meeting_request_results) > 0:
+                existing_request = True
+                meeting_request = meeting_request_results[0]
+                if meeting_request.accepted:
+                    status = 'Approved'
+                elif meeting_request.denied:
+                    status = 'Denied'
+                else:
+                    status = 'No Response'
+            else:
+                existing_request = False
+                status = 'No Request Yet'
+
+            new_packet['legislator'] = legislator
+            new_packet['status'] = status
+            new_packet['existing_request'] = existing_request
+
+            packets.append(new_packet)
+
+        return render(request, 'controlpanel/viewmeeting_requests.html', {'initiative': initiative,
+                                                                          'groups': groups,
+                                                                          'packets': packets})
+
+
+    return render(request, 'controlpanel/viewmeeting_requests.html', {'initiative': initiative,
+                                                                      'groups': groups})
+@login_required()
+def new_meeting_request_individual(request, init_pk, leg_pk):
+    initiative = Initiative.objects.get(pk=init_pk)
+    legislator = Legislator.objects.get(pk=leg_pk)
+
+    new_meeting_request_object = MeetingRequest(initiative=initiative,
+                                                requesting_organizer=request.user,
+                                                legislator=legislator)
+    new_meeting_request_object.save()
+
+    # TODO: email functionality
+    print("Email sent.")
+
+    return redirect('meetingreqspanel', init_pk)

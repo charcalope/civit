@@ -71,4 +71,24 @@ class Expense(models.Model):
     denied = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
 
+class Legislator(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+
+class LegislatorGroup(models.Model):
+    group_title = models.CharField(max_length=150)
+    legislators = models.ManyToManyField(Legislator)
+
+class MeetingRequest(models.Model):
+    initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE, null=True)
+
+    requesting_organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+    request_date = models.DateTimeField(auto_now_add=True, editable=False)
+
+    legislator = models.ForeignKey(Legislator, on_delete=models.CASCADE)
+
+    accepted = models.BooleanField(default=False)
+    denied = models.BooleanField(default=False)
+
 register(Initiative)
