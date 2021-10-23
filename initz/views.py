@@ -82,7 +82,7 @@ def homepanel(request, pk):
 def create_expense(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     if request.method == 'GET':
-        return render(request, 'controlpanel/createexpense.html', {'form': CreateExpenseForm})
+        return render(request, 'controlpanel/create_expense.html', {'initiative': initiative, 'form': CreateExpenseForm})
     else:
         form = CreateExpenseForm(request.POST)
         if form.is_valid():

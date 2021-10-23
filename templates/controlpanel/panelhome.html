@@ -5,6 +5,17 @@
         <div>
             <h1>Control Panel</h1>
             <h1>{{ initiative.title }}</h1>
+            <div class="tabs">
+                <ul>
+                    <li class="tablinks is-active"><a>People</a></li>
+                    <li class="tablinks"><a>Status Feed</a></li>
+                    <li class="tablinks"><a>Expenses</a></li>
+                    <li class="tablinks"><a href="{% url 'create_expense' initiative.pk %}">Create Expense</a></li>
+                    <li class="tablinks"><a>Documents</a></li>
+                </ul>
+            </div>
+            {% block body %}
+            {% endblock %}
         </div>
     </div>
 {% endblock %}

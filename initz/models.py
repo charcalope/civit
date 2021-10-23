@@ -72,7 +72,3 @@ class Expense(models.Model):
     approved = models.BooleanField(default=False)
     denied = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
-
-class Legislator(models.Model):
-
-register(Initiative)
