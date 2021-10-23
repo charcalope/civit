@@ -1,0 +1,11 @@
+<!--users/templates/registration/public_profile.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h2>{{ other_user.username }}</h2>
+        <p>{{ other_user.bio }}</p>
+    </div>
+
+{% endblock %}

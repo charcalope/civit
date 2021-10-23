@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Civit</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+<div>
+    <div>
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'landing' %}">
+      <b>Civit</b>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          {% if user.is_authenticated %}
+            <a class="button is-light" href="{% url 'dashboard' %}">
+            Dashboard
+          </a>
+              <a class="button is-light" href="{% url 'logout' %}">
+            Logout
+          </a>
+        {% else %}
+            <a class="button is-primary" href="{% url 'register' %}">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light" href="{% url 'login' %}">
+            Log in
+          </a>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+    </div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>
