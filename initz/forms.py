@@ -31,3 +31,12 @@ class CreateExpenseForm(forms.Form):
 
 class StatusUpdateForm(forms.Form):
     status = forms.CharField(max_length=1000, label='Status Description')
+
+class CreateDocumentForm(forms.Form):
+    doc_title = forms.CharField(max_length=200, label='Document Title')
+    description = forms.CharField(max_length=400, label='Document Description')
+    doc_url = forms.URLField(label='Google Drive Url')
+
+class CreateAnnotationForm(forms.Form):
+    excerpt = forms.CharField(widget=forms.Textarea, label='Quote a part of the Document')
+    comment = forms.CharField(widget=forms.Textarea, label='Add an Annotation')

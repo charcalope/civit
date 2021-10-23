@@ -22,5 +22,7 @@ urlpatterns = [
     path('<pk>/manageorganizers', views.manageorganizers, name='manageorganizers'),
     path('<init_pk>/<status_pk>/delete_status', views.delete_status, name='delete_status'),
     path('<init_pk>/<leg_pk>/create_req', views.new_meeting_request_individual, name='createreqind'),
+    path('<pk>/create_doc', views.create_document, name='createdoc'),
+    path('<init_pk>/<doc_pk>/create_annotation', views.create_annotation, name='createannotation'),
 
 ]

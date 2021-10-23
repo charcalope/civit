@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
-from django.urls import path
-from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm
+from django.urls import path, reverse_lazy
+from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm, \
+    CreateDocumentForm, CreateAnnotationForm
 from django.contrib.auth.decorators import login_required
 from accounts.models import User
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, MeetingRequest, Legislator
+from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, \
+    MeetingRequest, Legislator, Document, Annotation
 
 # Create your views here.
 @login_required
@@ -129,12 +132,14 @@ def delete_status(request, init_pk, status_pk):
 @login_required
 def expenses_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/view_expenses.html', {'initiative': initiative})
+    return render(request, 'controlpanel/viewexpenses.html', {'initiative': initiative})
 
 @login_required
 def docs_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/viewdocs.html', {'initiative': initiative})
+    documents = Document.objects.filter(initiative=initiative)
+    return render(request, 'controlpanel/viewdocs.html', {'initiative': initiative,
+                                                          'documents': documents})
 
 @login_required
 def people_panel(request, pk):
@@ -200,6 +205,7 @@ def new_meeting_request_individual(request, init_pk, leg_pk):
     return redirect('meetingreqspanel', init_pk)
 
 @login_required
+<<<<<<< HEAD
 def manageorganizers(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     if request.method == 'GET':
@@ -219,3 +225,46 @@ def manageorganizers(request, pk):
         user = User.objects.get(pk=user_pk)
         initiative.organizers.add(user)
         return redirect(request.META.get('HTTP_REFERER'))
+=======
+def create_document(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    if request.method == 'GET':
+        return render(request, 'controlpanel/create_document.html', {'initiative': initiative,
+                                                                     'form':CreateDocumentForm})
+    else:
+        form = CreateDocumentForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            new_document = Document(initiative=initiative,
+                                    posting_organizer=request.user,
+                                    doc_url=data['doc_url'],
+                                    title=data['doc_title'],
+                                    description=data['description'])
+            new_document.save()
+
+            return redirect('homepanel', initiative.pk)
+
+@login_required
+def create_annotation(request, init_pk, doc_pk):
+    initiative = Initiative.objects.get(pk=init_pk)
+    document = Document.objects.get(pk=doc_pk)
+    if request.method == 'GET':
+        return render(request, 'controlpanel/create_annotation.html', {'initiative': initiative,
+                                                                       'form': CreateAnnotationForm})
+    else:
+        form = CreateAnnotationForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            new_annotation = Annotation(initiative=initiative,
+                                        document=document,
+                                        annotating_organizer=request.user,
+                                        excerpt=data['excerpt'],
+                                        comment=data['comment'])
+            new_annotation.save()
+
+            return redirect('homepanel', initiative.pk)
+
+
+>>>>>>> 449a9b0dbaacd7ca14f7d52b046d32d8b64ba17c
