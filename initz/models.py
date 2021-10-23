@@ -64,7 +64,13 @@ class Expense(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
     reporter = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=200, default='No Expense Title Set')
     description = models.TextField()
-    status = models.CharField(max_length=20)
+    amount = models.IntegerField(default=0)
+
+    approved = models.BooleanField(default=False)
+    denied = models.BooleanField(default=False)
+    paid = models.BooleanField(default=False)
 
 register(Initiative)

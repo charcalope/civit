@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.urls import path
-from .forms import InitiativeForm, DonateForm
+from .forms import InitiativeForm, DonateForm, CreateExpenseForm
 from django.contrib.auth.decorators import login_required
 
-from .models import Initiative, Donation
+from .models import Initiative, Donation, Expense
 
 # Create your views here.
+@login_required
 def create(request):
     if request.method == 'GET':
         return render(request, 'initiative/create.html', {'form': InitiativeForm})
@@ -49,10 +50,6 @@ def sign(request, pk):
     initiative.save()
     return redirect(request.META.get('HTTP_REFERER'))
 
-@login_required
-def homepanel(request, pk):
-    initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/panelhome.html', {'initiative': initiative})
 
 def view_status_feed(request, pk):
     initiative = Initiative.objects.get(pk=pk)
@@ -73,3 +70,53 @@ def view_people(request, pk):
 def view_meeting_requests(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     return render(request, 'initiative/meeting_requests.html', {'initiative': initiative})
+
+# CONTROL PANEL FUNCTIONALITY
+
+@login_required
+def homepanel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/panelhome.html', {'initiative': initiative})
+
+@login_required
+def create_expense(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    if request.method == 'GET':
+        return render(request, 'controlpanel/createexpense.html', {'form': CreateExpenseForm})
+    else:
+        form = CreateExpenseForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            form_title = data['expense_title']
+            form_desc = data['description']
+            form_amount = data['amount']
+
+            new_expense = Expense(initiative=initiative,
+                                  reporter=request.user,
+                                  title=form_title,
+                                  description=form_desc,
+                                  amount=form_amount)
+
+            new_expense.save()
+
+            return redirect('homepanel', pk=initiative.pk)
+
+@login_required
+def expenses_panel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/viewexpenses.html', {'initiative': initiative})
+
+@login_required
+def status_panel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/viewstatus.html', {'initiative': initiative})
+
+@login_required
+def docs_panel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/viewdocs.html', {'initiative': initiative})
+
+@login_required
+def people_panel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/viewpeople.html', {'initiative': initiative})
