@@ -4,6 +4,14 @@
     <div>
         <h1>Welcome to the landing page.</h1>
         <a class="button is-light" href="{% url 'create' %}">Create Initiative</a>
-        
+        {% for init in initiatives %}
+        <div class="card">
+            <h2>{{ init.title }}</h2>
+            <h3>Organizer: {{ init.primary_organizer }}</h3>
+            <p>Problem Statement: {{ init.problem_statement }}</p>
+            <p>People Impacted: {{ init.people_impact }}</p>
+            <p>Date Created: {{ init.date_created }}</p>
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}

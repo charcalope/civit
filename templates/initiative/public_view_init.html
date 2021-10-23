@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div>
+            <h1>{{ initiative.title }}</h1>
+            <p>Created by: {{ initiative.primary_organizer.username }}</p>
+            <p>{{ initiative.problem_statement }}</p>
+            <p>{{ initiative.people_impact }}</p>
+            <p>{{ initiative.legislative_scope }}</p>
+            {% for tag in initiative.tags %}
+                <p>{{ tag }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

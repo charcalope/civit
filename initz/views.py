@@ -21,7 +21,11 @@ def create(request):
             new_initiative.save()
 
             tag_list = data['tags']
-            tag_string = ', '.join(tag_list)
-            new_initiative.tags = tag_string
+            print(tag_list)
+            new_initiative.tags = tag_list
 
-            return redirect('landing')
+            return redirect('viewinit', pk=new_initiative.pk)
+
+def view_public_init(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'initiative/public_view_init.html', {'initiative': initiative})

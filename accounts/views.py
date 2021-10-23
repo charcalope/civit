@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm, UserUpdateForm
 from .models import User
+from initz.models import Initiative
 from django.views.generic.edit import UpdateView, CreateView
 from django.forms.models import modelform_factory
 
@@ -11,7 +12,8 @@ from django.forms.models import modelform_factory
 # Create your views here.
 
 def home(request):
-    return render(request, 'home_a.html', {})
+    initiatives = Initiative.objects.all()
+    return render(request, 'home_a.html', {'initiatives':initiatives})
 
 @login_required()
 def dashboard(request):
