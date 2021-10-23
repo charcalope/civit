@@ -16,6 +16,7 @@ class Initiative(models.Model):
     sponsors = models.ManyToManyField(User, related_name='sponsors')
     organizers = models.ManyToManyField(User, related_name='organizers')
 
+# hello world
 class StatusUpdate(models.Model):
     initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
 
