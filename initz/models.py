@@ -28,6 +28,12 @@ class Initiative(models.Model):
             sum += donation.amount
         return sum
 
+    def checkSignature(self, user):
+        for supporter in supporters:
+            if supporter == user:
+                return false
+        return true
+
 # hello world
 class StatusUpdate(models.Model):
     initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)

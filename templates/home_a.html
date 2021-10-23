@@ -16,6 +16,11 @@
             <p>People Impacted: {{ init.people_impact }}</p>
             <p>Date Created: {{ init.date_created }}</p>
             <a class="button" href="{% url 'viewinit' init.pk %}">View/Donate</a>
+            {% if user.is_authenticated and user not in init.supporters.all %}
+            <a class="button" href="{% url 'sign' init.pk %}">Sign</a>
+            {% else %}
+            <a class="button" disabled>Sign</a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>

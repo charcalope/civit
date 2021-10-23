@@ -41,3 +41,10 @@ def view_public_init(request, pk):
                                         amount=data['amount'])
             new_donation.save()
             return redirect('viewinit', pk=initiative.pk)
+
+@login_required
+def sign(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    initiative.supporters.add(request.user)
+    initiative.save()
+    return redirect(request.META.get('HTTP_REFERER'))

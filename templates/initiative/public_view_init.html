@@ -11,6 +11,9 @@
             {% for tag in initiative.tags %}
                 <p>{{ tag }}</p>
             {% endfor %}
+            {% for user in initiative.supporters.all %}
+                <p>{{ user }}</p>
+            {% endfor %}
             <p>Donation Total Amount: {{ initiative.totalDonations }}</p>
             {% if user.is_authenticated %}
             <form method="post">
