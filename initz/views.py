@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.urls import path
-from .forms import InitiativeForm, DonateForm, CreateExpenseForm
+from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm
 from django.contrib.auth.decorators import login_required
 
-from .models import Initiative, Donation, Expense
+from .models import Initiative, Donation, Expense, StatusUpdate
 
 # Create your views here.
 @login_required
@@ -102,14 +102,33 @@ def create_expense(request, pk):
             return redirect('homepanel', pk=initiative.pk)
 
 @login_required
-def expenses_panel(request, pk):
-    initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/viewexpenses.html', {'initiative': initiative})
-
-@login_required
 def status_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/viewstatus.html', {'initiative': initiative})
+    if request.method == 'GET':
+        return render(request, 'controlpanel/viewstatus.html', {'initiative': initiative, 'form': StatusUpdateForm})
+    else:
+        form = StatusUpdateForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            status = data['status']
+
+            new_status_update = StatusUpdate(initiative=initiative,
+                                            poster=request.user,
+                                            text_content=status)
+
+            new_status_update.save()
+
+            return redirect('statuspanel', pk=initiative.pk)
+
+@login_required
+def delete_status(request, init_pk, status_pk):
+    statusUpdate = StatusUpdate.objects.get(pk=status_pk).delete()
+    return redirect('statuspanel', pk=init_pk)
+
+@login_required
+def expenses_panel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/view_expenses.html', {'initiative': initiative})
 
 @login_required
 def docs_panel(request, pk):
@@ -125,5 +144,3 @@ def people_panel(request, pk):
 def meeting_requests_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     return render(request, 'controlpanel/viewmeeting_requests.html', {'initiative': initiative})
-
-

@@ -28,3 +28,6 @@ class CreateExpenseForm(forms.Form):
     expense_title = forms.CharField(max_length=200, label='Expense Title')
     description = forms.CharField(max_length=400, label='Description of Expense')
     amount = forms.IntegerField(label='Expense Amount')
+
+class StatusUpdateForm(forms.Form):
+    status = forms.CharField(max_length=1000, label='Status Description')

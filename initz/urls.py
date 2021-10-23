@@ -19,5 +19,6 @@ urlpatterns = [
     path('<pk>/statuspanel', views.status_panel, name='statuspanel'),
     path('<pk>/create_expense', views.create_expense, name='create_expense'),
     path('<pk>/meetingrequests_panel', views.meeting_requests_panel, name='meetingreqspanel'),
+    path('<init_pk>/<status_pk>/delete_status', views.delete_status, name='delete_status'),
 
 ]

@@ -28,11 +28,9 @@ class Initiative(models.Model):
             sum += donation.amount
         return sum
 
-    def checkSignature(self, user):
-        for supporter in supporters:
-            if supporter == user:
-                return false
-        return true
+    def getStatusUpdates(self):
+        statusUpdates = StatusUpdate.objects.filter(initiative=self.pk)
+        return statusUpdates
 
 # hello world
 class StatusUpdate(models.Model):

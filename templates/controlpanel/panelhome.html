@@ -8,7 +8,7 @@
             <div class="tabs">
                 <ul>
                     <li class="tablinks is-active"><a>People</a></li>
-                    <li class="tablinks"><a>Status Feed</a></li>
+                    <li class="tablinks"><a href="{% url 'statuspanel' initiative.pk %}">Status Feed</a></li>
                     <li class="tablinks"><a>Expenses</a></li>
                     <li class="tablinks"><a href="{% url 'create_expense' initiative.pk %}">Create Expense</a></li>
                     <li class="tablinks"><a>Documents</a></li>
