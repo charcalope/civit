@@ -53,3 +53,23 @@ def sign(request, pk):
 def homepanel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     return render(request, 'controlpanel/panelhome.html', {'initiative': initiative})
+
+def view_status_feed(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'initiative/status_feed.html', {'initiative': initiative})
+
+def view_expenses(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'initiative/expenses.html', {'initiative': initiative})
+
+def view_documents(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'initiative/documents.html', {'initiative': initiative})
+
+def view_people(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'initiative/people.html', {'initiative': initiative})
+
+def view_meeting_requests(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'initiative/meeting_requests.html', {'initiative': initiative})
