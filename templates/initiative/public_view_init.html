@@ -8,9 +8,21 @@
             <p>{{ initiative.problem_statement }}</p>
             <p>{{ initiative.people_impact }}</p>
             <p>{{ initiative.legislative_scope }}</p>
+            <div class="tags">Tags:
             {% for tag in initiative.tags %}
-                <p>{{ tag }}</p>
+                <span class="tag">{{ tag }}</span>
             {% endfor %}
+            </div>
+        </div>
+        <div>
+            <p>Donation Total Amount: {{ initiative.totalDonations }}</p>
+            {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                {{ donate_form.as_p }}
+                <input type="submit" value="Submit Donation">
+            </form>
+            {% endif %}
         </div>
         <div class="tabs">
             <ul>
@@ -24,30 +36,17 @@
         <div id="people" class="tab_content">
             {% include 'initiative/people.html' %}
         </div>
-        <div id="status_feed" class="tab_content">
+        <div id="status_feed" class="tab_content" style="display:none">
             {% include 'initiative/status_feed.html' %}
         </div>
-        <div id="expenses" class="tab_content">
+        <div id="expenses" class="tab_content" style="display:none">
             {% include 'initiative/expenses.html' %}
         </div>
-        <div id="meeting_requests" class="tab_content">
+        <div id="meeting_requests" class="tab_content" style="display:none">
             {% include 'initiative/meeting_requests.html' %}
         </div>
-        <div id="documents" class="tab_content">
+        <div id="documents" class="tab_content" style="display:none">
             {% include 'initiative/documents.html' %}
-        </div>
-        <div>
-            {% for user in initiative.supporters.all %}
-                <p>{{ user }}</p>
-            {% endfor %}
-            <p>Donation Total Amount: {{ initiative.totalDonations }}</p>
-            {% if user.is_authenticated %}
-            <form method="post">
-                {% csrf_token %}
-                {{ donate_form.as_p }}
-                <input type="submit" value="Submit Donation">
-            </form>
-            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -1,3 +1,13 @@
 <div>
-    <h1>Hello World</h1>
+    {% for status in initiative.getStatusUpdates %}
+    {% if forloop.counter0|divisibleby:2 %}
+    <div class="card" style="background-color:#D3D3D3">
+    {% else %}
+    <div class="card">
+    {% endif %}
+        <p>{{ status.text_content }}</p>
+        <p>Posted by: {{ status.poster }}</p>
+        <p>Date Created: {{ status.date_created }}</p>
+    </div>
+    {% endfor %}
 </div>

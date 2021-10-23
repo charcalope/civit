@@ -32,6 +32,10 @@ class Initiative(models.Model):
         statusUpdates = StatusUpdate.objects.filter(initiative=self.pk)
         return statusUpdates
 
+    def getExpenses(self):
+        expenses = Expense.objects.filter(initiative=self.pk)
+        return expenses
+
 # hello world
 class StatusUpdate(models.Model):
     initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
