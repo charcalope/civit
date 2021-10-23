@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Civit</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+<div>
+    <div>
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'landing' %}">
+      <b>Civit</b>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="#">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      </div>
+    </div>
+</nav>
+    </div>
+    <div>
+        <div>
+            <div class="hero is-small is-link">
+                  <div class="hero-body">
+                    <div class="columns">
+                        <div class="column is-two-thirds">
+                            <div class="block" style="margin-bottom: 50px">
+                               <h1 class="title">Climate Change Legislation</h1>
+                                <h1 class="subtitle">Started by <b>Anastasia Spangler</b></h1>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="block">
+                                <form class="box" style="text-align: center">
+                                  <div class="field">
+                                    <label class="label">Donation Amount</label>
+                                    <div class="control">
+                                      <input class="input" type="number" placeholder="100">
+                                    </div>
+                                  </div>
+
+                                  <button class="button is-danger">Donate</button>
+                                </form>
+                            </div>
+                            <div class="block">
+                                <button class="button is-medium is-fullwidth is-danger">Sign</button>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            <div class="hero is-small is-link">
+                <nav class="level" style="padding: 30px">
+                      <div class="level-item has-text-centered">
+                        <div>
+                          <p class="heading">Supporters</p>
+                          <p class="title">3,456</p>
+                        </div>
+                      </div>
+                      <div class="level-item has-text-centered">
+                        <div>
+                          <p class="heading">Donors</p>
+                          <p class="title">123</p>
+                        </div>
+                      </div>
+                      <div class="level-item has-text-centered">
+                        <div>
+                          <p class="heading">Donations</p>
+                          <p class="title">$12,300</p>
+                        </div>
+                      </div>
+                      <div class="level-item has-text-centered">
+                        <div>
+                          <p class="heading">Sponsors</p>
+                          <p class="title">15</p>
+                        </div>
+                      </div>
+                    </nav>
+            </div>
+    </div>
+        <div>
+            <div style="padding: 25px">
+                <div class="tabs is-toggle is-fullwidth">
+                  <ul>
+                    <li>
+                      <a>
+                        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+                        <span>Organizers</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                        <span>Expenses</span>
+                      </a>
+                    </li>
+                    <li class="is-active">
+                      <a>
+                        <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                        <span>Status Updates</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                        <span>Meeting Requests</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                    <div class="columns is-mobile">
+                          <div class="column is-three-fifths is-offset-one-fifth">
+                              <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-reply"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-heart"></i></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>
+                              <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-reply"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-heart"></i></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>
+                              <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-reply"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-heart"></i></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>
+                          </div>
+                        </div>
+</div>
+
+</body>
+</html>
