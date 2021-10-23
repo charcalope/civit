@@ -4,6 +4,7 @@
     <div>
         <div>
             <h1>{{ initiative.title }}</h1>
+            <img src="data:image\png;base64,{{ initiative.qrcode }}">
             <p>Created by: {{ initiative.primary_organizer.username }}</p>
             <p>{{ initiative.problem_statement }}</p>
             <p>{{ initiative.people_impact }}</p>

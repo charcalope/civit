@@ -5,9 +5,19 @@ from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateFo
 from django.contrib.auth.decorators import login_required
 from accounts.models import User
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+import qrcode
+from io import BytesIO
+import base64
 
 from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, \
     MeetingRequest, Legislator, Document, Annotation
+
+def generateQRCode(url):
+    pil_img = qrcode.make(url).resize((150,150))
+    img_io = BytesIO()
+    pil_img.save(img_io, 'PNG')
+    img_base64 = base64.b64encode(img_io.getvalue()).decode("utf-8")
+    return img_base64
 
 # Create your views here.
 @login_required
@@ -36,6 +46,7 @@ def create(request):
 def view_public_init(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     if request.method == "GET":
+        initiative.qrcode = generateQRCode("https://www.youtube.com/")
         return render(request, 'initiative/public_view_init.html', {'initiative': initiative, 'donate_form': DonateForm})
     else:
         form = DonateForm(request.POST)
@@ -205,7 +216,6 @@ def new_meeting_request_individual(request, init_pk, leg_pk):
     return redirect('meetingreqspanel', init_pk)
 
 @login_required
-<<<<<<< HEAD
 def manageorganizers(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     if request.method == 'GET':
@@ -225,7 +235,7 @@ def manageorganizers(request, pk):
         user = User.objects.get(pk=user_pk)
         initiative.organizers.add(user)
         return redirect(request.META.get('HTTP_REFERER'))
-=======
+
 def create_document(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     if request.method == 'GET':
@@ -265,6 +275,3 @@ def create_annotation(request, init_pk, doc_pk):
             new_annotation.save()
 
             return redirect('homepanel', initiative.pk)
-
-
->>>>>>> 449a9b0dbaacd7ca14f7d52b046d32d8b64ba17c
