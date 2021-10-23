@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
-from django.urls import path
-from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm, CreateDocumentForm
+from django.urls import path, reverse_lazy
+from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm, \
+    CreateDocumentForm, CreateAnnotationForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, MeetingRequest, Legislator, Document
+from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, \
+    MeetingRequest, Legislator, Document, Annotation
 
 # Create your views here.
 @login_required
@@ -128,12 +131,14 @@ def delete_status(request, init_pk, status_pk):
 @login_required
 def expenses_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/view_expenses.html', {'initiative': initiative})
+    return render(request, 'controlpanel/viewexpenses.html', {'initiative': initiative})
 
 @login_required
 def docs_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'controlpanel/viewdocs.html', {'initiative': initiative})
+    documents = Document.objects.filter(initiative=initiative)
+    return render(request, 'controlpanel/viewdocs.html', {'initiative': initiative,
+                                                          'documents': documents})
 
 @login_required
 def people_panel(request, pk):
@@ -217,3 +222,26 @@ def create_document(request, pk):
             new_document.save()
 
             return redirect('homepanel', initiative.pk)
+
+@login_required
+def create_annotation(request, init_pk, doc_pk):
+    initiative = Initiative.objects.get(pk=init_pk)
+    document = Document.objects.get(pk=doc_pk)
+    if request.method == 'GET':
+        return render(request, 'controlpanel/create_annotation.html', {'initiative': initiative,
+                                                                       'form': CreateAnnotationForm})
+    else:
+        form = CreateAnnotationForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            new_annotation = Annotation(initiative=initiative,
+                                        document=document,
+                                        annotating_organizer=request.user,
+                                        excerpt=data['excerpt'],
+                                        comment=data['comment'])
+            new_annotation.save()
+
+            return redirect('homepanel', initiative.pk)
+
+

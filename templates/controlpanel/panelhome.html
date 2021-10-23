@@ -11,7 +11,7 @@
                     <li class="tablinks"><a href="{% url 'statuspanel' initiative.pk %}">Status Feed</a></li>
                     <li class="tablinks"><a>Expenses</a></li>
                     <li class="tablinks"><a href="{% url 'create_expense' initiative.pk %}">Create Expense</a></li>
-                    <li class="tablinks"><a>Documents</a></li>
+                    <li class="tablinks"><a href="{% url 'docspanel' initiative.pk %}">Documents</a></li>
                     <li class="tablinks"><a href="{% url 'meetingreqspanel' initiative.pk %}">Meeting Requests</a></li>
                     <li class="tablinks"><a href="{% url 'createdoc' initiative.pk %}">Create Document</a></li>
                 </ul>

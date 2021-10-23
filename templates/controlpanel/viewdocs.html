@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'controlpanel/panelhome.html' %}
 
-</body>
-</html>
+{% block body %}
+    <div>
+        <h1>View Documents</h1>
+        <div>
+            {% for document in documents %}
+                <div style="border: black 2px solid">
+                    <p>{{ document.title }}</p>
+                    <a href="{% url 'createannotation' init_pk=initiative.pk doc_pk=document.pk %}">Create Annotation</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
