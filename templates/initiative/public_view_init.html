@@ -11,6 +11,32 @@
             {% for tag in initiative.tags %}
                 <p>{{ tag }}</p>
             {% endfor %}
+        </div>
+        <div class="tabs">
+            <ul>
+                <li class="tablinks is-active"><a onclick="openTab(event,'people')">People</a></li>
+                <li class="tablinks"><a onclick="openTab(event,'status_feed')">Status Feed</a></li>
+                <li class="tablinks"><a onclick="openTab(event,'expenses')">Expenses</a></li>
+                <li class="tablinks"><a onclick="openTab(event,'meeting_requests')">Meeting Requests</a></li>
+                <li class="tablinks"><a onclick="openTab(event,'documents')">Documents</a></li>
+            </ul>
+        </div>
+        <div id="people" class="tab_content">
+            {% include 'initiative/people.html' %}
+        </div>
+        <div id="status_feed" class="tab_content">
+            {% include 'initiative/status_feed.html' %}
+        </div>
+        <div id="expenses" class="tab_content">
+            {% include 'initiative/expenses.html' %}
+        </div>
+        <div id="meeting_requests" class="tab_content">
+            {% include 'initiative/meeting_requests.html' %}
+        </div>
+        <div id="documents" class="tab_content">
+            {% include 'initiative/documents.html' %}
+        </div>
+        <div>
             {% for user in initiative.supporters.all %}
                 <p>{{ user }}</p>
             {% endfor %}
