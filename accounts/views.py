@@ -8,6 +8,7 @@ from initz.models import Initiative
 from django.views.generic.edit import UpdateView, CreateView
 from django.forms.models import modelform_factory
 
+from initz.models import Initiative
 
 # Create your views here.
 
@@ -15,9 +16,24 @@ def home(request):
     initiatives = Initiative.objects.all()
     return render(request, 'home_a.html', {'initiatives':initiatives})
 
-@login_required()
+@login_required
 def dashboard(request):
-    return render(request, 'dash/dashboard.html', {})
+    my_organizer_inits = set()
+    my_supporting_inits = set()
+
+    initiatives = Initiative.objects.all()
+
+    for init in initiatives:
+        if (init.primary_organizer == request.user) or (request.user in init.organizers.all()):
+            my_organizer_inits.add(init)
+        elif (request.user in init.supporters.all()):
+            my_supporting_inits.add(init)
+
+    my_organizer_inits = list(my_organizer_inits)
+    my_supporting_inits = list(my_supporting_inits)
+
+    return render(request, 'dash/dashboard.html', {'support_inits': my_supporting_inits,
+                                                   'organizer_inits': my_organizer_inits})
 
 def register(request):
     if request.method == 'GET':

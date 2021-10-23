@@ -48,3 +48,8 @@ def sign(request, pk):
     initiative.supporters.add(request.user)
     initiative.save()
     return redirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def homepanel(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/panelhome.html', {'initiative': initiative})

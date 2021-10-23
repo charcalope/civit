@@ -3,7 +3,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Dashboard</h1>
-    <h3>Welcome, {{ user.username }}</h3>
+    <div>
+        <div>
+            <h1>Dashboard</h1>
+            <h3>Welcome, {{ user.username }}</h3>
+        </div>
+        <div>
+            <h1>Initiatives you Organize</h1>
+            {% for init in organizer_inits %}
+                <div style="border: black 3px solid;  border-radius: 5px">
+                    <h3>{{ init.title }}</h3>
+                    <a href="{% url 'viewinit' init.pk %}">View</a>
+                    <a href="{% url 'homepanel' init.pk %}">Control Panel</a>
+                </div>
+            {% endfor %}
+
+            <h1>Initiatives you Support</h1>
+            {% for init in support_inits %}
+                <div style="border: black 3px solid;  border-radius: 5px">
+                    <h3>{{ init.title }}</h3>
+                    <a href="{% url 'viewinit' init.pk %}">View</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 
 {% endblock %}
