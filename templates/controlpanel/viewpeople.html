@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div>
+    <div>
+        {% for user in initiative.supporters.all %}
+            <p>{{ user }}</p>
+        {% endfor %}
+    </div>
+</div>

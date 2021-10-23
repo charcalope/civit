@@ -1,0 +1,18 @@
+{% extends 'controlpanel/panelhome.html' %}
+
+{% block body %}
+    <div>
+        <div>
+            <h1>Manage Organizers</h1>
+            <form method="post">
+                {% csrf_token %}
+                <select name="user_select">
+                    {% for user in users %}
+                        <option value="{{ user.pk }}">{{ user }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+{% endblock %}

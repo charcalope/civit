@@ -13,6 +13,7 @@
                     <li class="tablinks"><a href="{% url 'create_expense' initiative.pk %}">Create Expense</a></li>
                     <li class="tablinks"><a>Documents</a></li>
                     <li class="tablinks"><a href="{% url 'meetingreqspanel' initiative.pk %}">Meeting Requests</a></li>
+                    <li class="tablinks"><a href="{% url 'manageorganizers' initiative.pk %}">Manage Organizers</a></li>
                 </ul>
             </div>
             {% block body %}

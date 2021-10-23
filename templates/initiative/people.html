@@ -1,5 +1,11 @@
 <div>
     <div>
+        <p>Organizers:</p>
+        <p>{{ initiative.primary_organizer }}</p>
+        {% for user in initiative.organizers.all %}
+            <p>{{ user }}</p>
+        {% endfor %}
+        <p>Supporters:</p>
         {% for user in initiative.supporters.all %}
             <p>{{ user }}</p>
         {% endfor %}

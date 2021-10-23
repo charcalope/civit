@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.urls import path
 from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm
 from django.contrib.auth.decorators import login_required
+from accounts.models import User
 
 from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, MeetingRequest, Legislator
 
@@ -197,3 +198,24 @@ def new_meeting_request_individual(request, init_pk, leg_pk):
     print("Email sent.")
 
     return redirect('meetingreqspanel', init_pk)
+
+@login_required
+def manageorganizers(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    if request.method == 'GET':
+        users = list(User.objects.all())
+        print(users)
+        organizers = []
+        organizers.extend(initiative.organizers.all())
+        organizers.append(initiative.primary_organizer)
+        print(organizers)
+        for user in users:
+            if user in organizers:
+                users.remove(user)
+        return render(request, 'controlpanel/manageorganizers.html', {'initiative': initiative,
+                                                                      'users': users})
+    else:
+        user_pk = request.POST.get('user_select')
+        user = User.objects.get(pk=user_pk)
+        initiative.organizers.add(user)
+        return redirect(request.META.get('HTTP_REFERER'))

@@ -19,6 +19,7 @@ urlpatterns = [
     path('<pk>/statuspanel', views.status_panel, name='statuspanel'),
     path('<pk>/create_expense', views.create_expense, name='create_expense'),
     path('<pk>/meetingrequests_panel', views.meeting_requests_panel, name='meetingreqspanel'),
+    path('<pk>/manageorganizers', views.manageorganizers, name='manageorganizers'),
     path('<init_pk>/<status_pk>/delete_status', views.delete_status, name='delete_status'),
     path('<init_pk>/<leg_pk>/create_req', views.new_meeting_request_individual, name='createreqind'),
 
