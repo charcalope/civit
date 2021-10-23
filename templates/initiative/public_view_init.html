@@ -3,27 +3,31 @@
 {% block content %}
     <div>
         <div>
-            <h1>{{ initiative.title }}</h1>
-            <img src="data:image\png;base64,{{ initiative.qrcode }}">
-            <p>Created by: {{ initiative.primary_organizer.username }}</p>
-            <p>{{ initiative.problem_statement }}</p>
-            <p>{{ initiative.people_impact }}</p>
-            <p>{{ initiative.legislative_scope }}</p>
-            <div class="tags">Tags:
-            {% for tag in initiative.tags %}
-                <span class="tag">{{ tag }}</span>
-            {% endfor %}
+            <div class="columns"/>
+                <div class="column content">
+                    <h1>{{ initiative.title }}</h1>
+                    {# <img src="data:image\png;base64,{{ initiative.qrcode }}"> #}
+                    <p>Created by: {{ initiative.primary_organizer.username }}</p>
+                    <p>{{ initiative.problem_statement }}</p>
+                    <p>{{ initiative.people_impact }}</p>
+                    <p>{{ initiative.legislative_scope }}</p>
+                    <div class="tags">Tags:
+                    {% for tag in initiative.tags %}
+                        <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="column">
+                    <p>Donation Total Amount: {{ initiative.totalDonations }}</p>
+                    {% if user.is_authenticated %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ donate_form.as_p }}
+                        <input type="submit" value="Submit Donation">
+                    </form>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        <div>
-            <p>Donation Total Amount: {{ initiative.totalDonations }}</p>
-            {% if user.is_authenticated %}
-            <form method="post">
-                {% csrf_token %}
-                {{ donate_form.as_p }}
-                <input type="submit" value="Submit Donation">
-            </form>
-            {% endif %}
         </div>
         <div class="tabs">
             <ul>
