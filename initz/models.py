@@ -1,8 +1,6 @@
 from django.db import models
 from accounts.models import User
-
-class Tag(models.Model):
-    tag_description = models.CharField(max_length=50)
+from tagging.registry import register
 
 # Create your models here.
 class Initiative(models.Model):
@@ -13,9 +11,6 @@ class Initiative(models.Model):
     problem_statement = models.TextField()
     people_impact = models.TextField()
     legislative_scope = models.TextField()
-
-    # requires a pre-defined tag list
-    tags = models.ManyToManyField(Tag)
 
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     # city or state
@@ -58,3 +53,5 @@ class Expense(models.Model):
     reporter = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
     status = models.CharField(max_length=20)
+
+register(Initiative)
