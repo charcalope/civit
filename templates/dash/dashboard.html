@@ -14,7 +14,7 @@
                 <div style="border: black 3px solid;  border-radius: 5px">
                     <h3>{{ init.title }}</h3>
                     <a href="{% url 'viewinit' init.pk %}">View</a>
-                    <a href="{% url 'homepanel' init.pk %}">Control Panel</a>
+                    <a href="{% url 'manageorganizers' init.pk %}">Control Panel</a>
                 </div>
             {% endfor %}
 

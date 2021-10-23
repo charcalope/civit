@@ -14,7 +14,7 @@
                         {# <p>{{ initiative.problem_statement }}</p>  #}
                         <p>{{ initiative.people_impact }}</p>
                         <p>{{ initiative.legislative_scope }}</p>
-                        <div class="tags">Tags:
+                        <div class="tags">
                         {% for tag in initiative.tags %}
                             <span class="tag">{{ tag }}</span>
                         {% endfor %}
@@ -34,10 +34,10 @@
                             </form>
                         </div>
                         <div class="block">
-                            {% if user.is_authenticated %}
-                            <form method="post">
-                                <button class="button is-medium is-fullwidth is-danger">Sign</button>
-                            </form>
+                            {% if user.is_authenticated and user not in initiative.supporters.all %}
+                            <a class="button is-medium is-fullwidth is-danger" href="{% url 'sign' initiative.pk %}">Sign</a>
+                            {% else %}
+                            <a class="button is-medium is-fullwidth is-danger" disabled>Sign</a>
                             {% endif %}
                         </div>
                     </div>

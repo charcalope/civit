@@ -1,5 +1,37 @@
 {% extends 'controlpanel/panelhome.html' %}
 
+{% block panel %}
+    <div class="box" style="border-radius: 7px; background-color: aliceblue">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li><a>Dashboard</a></li>
+          </ul>
+          <p class="menu-label">
+            Administration
+          </p>
+          <ul class="menu-list">
+            <li>
+              <a class="is-active" href="{% url 'manageorganizers' initiative.pk %}">Organizers</a>
+              <ul>
+                <li><a>View Organizers</a></li>
+                <li><a>Add an Organizer</a></li>
+              </ul>
+            </li>
+            <li>
+              <a>Manage Your Expenses</a>
+              <ul>
+                <li><a >Expense Records</a></li>
+                <li><a href="{% url 'create_expense' initiative.pk %}">Create an Expense</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'docspanel' initiative.pk %}">Documents</a></li>
+            <li><a href="{% url 'statuspanel' initiative.pk %}">Status Updates</a></li>
+            <li><a href="{% url 'meetingreqspanel' initiative.pk %}">Meeting Requests</a></li>
+          </ul>
+        </aside>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div>
         <div>
@@ -14,5 +46,46 @@
                 <input type="submit" value="Add">
             </form>
         </div>
+
+        <div>
+            <div class="box" style="background-color: aliceblue">
+                <h1 class="title">Initiative Title</h1>
+            </div>
+            <div class="box">
+                <h1 class="title">Organizers</h1>
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    <tr>
+                            <td>Sarah</td>
+                            <td>Pickney</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    <tr>
+                            <td>Anastasia</td>
+                            <td>Spangler</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    <tr>
+                            <td>Ted</td>
+                            <td>Petersen</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 {% endblock %}

@@ -3,22 +3,16 @@
 {% block content %}
     <div>
         <div>
-            <h1>Control Panel</h1>
-            <h1>{{ initiative.title }}</h1>
-            <div class="tabs">
-                <ul>
-                    <li class="tablinks is-active"><a>People</a></li>
-                    <li class="tablinks"><a href="{% url 'statuspanel' initiative.pk %}">Status Feed</a></li>
-                    <li class="tablinks"><a>Expenses</a></li>
-                    <li class="tablinks"><a href="{% url 'create_expense' initiative.pk %}">Create Expense</a></li>
-                    <li class="tablinks"><a href="{% url 'docspanel' initiative.pk %}">Documents</a></li>
-                    <li class="tablinks"><a href="{% url 'meetingreqspanel' initiative.pk %}">Meeting Requests</a></li>
-                    <li class="tablinks"><a href="{% url 'manageorganizers' initiative.pk %}">Manage Organizers</a></li>
-                    <li class="tablinks"><a href="{% url 'createdoc' initiative.pk %}">Create Document</a></li>
-                </ul>
+            <div class="columns">
+                <div class="column is-one-quarter" style="padding: 20px; margin-top: 20px">
+                    {% block panel %}
+                    {% endblock %}
+                </div>
+                <div class="column" style="padding: 20px; margin-top: 20px">
+                    {% block body %}
+                    {% endblock %}
+                </div>
             </div>
-            {% block body %}
-            {% endblock %}
         </div>
     </div>
 {% endblock %}
