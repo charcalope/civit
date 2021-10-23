@@ -1,6 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if not user.is_authenticated %}
+    <div>
+        <div class="tile is-ancestor">
+            <div class="tile is-6 is-parent">
+                <article class="tile is-child">
+                    <p class="title">You can be a Leader</p>
+                    <a class="button is-large" href="{% url 'register' %}">JOIN NOW</a>
+                </article>
+            </div>
+            <div class="tile is-parent is-vertical is-3">
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <figure class="image is-4by3">
+                            <img width="100%" src="https://pbs.twimg.com/profile_images/1351938473142448133/JQT93Cjo_400x400.jpg" alt=Placeholder>
+                        </figure>
+                        <p class="title">At the White house</p>
+                        <div class="content">
+                            <a>See the Update?</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <h1 class="title">21st</h1>
+                        <div class="content">
+                            <a>Save the trees protest ></a>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <h1 class="title">Climate Change</h1>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-parent is-vertical is-3">
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <h1 class="title">Education</h1>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <figure class="image is-4by3">
+                            <img width="100%" src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg" alt=Placeholder>
+                        </figure>
+                        <p class="title">New Funding Goal</p>
+                        <div class="content">
+                            <p>We've had so much momentum. Let's get 20 more districts covered.</p>
+                            <a>See the Update?</a>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% else %}
     <div>
         <h1>Welcome to the landing page.</h1>
         <a class="button is-light" href="{% url 'create' %}">Create Initiative</a>
@@ -24,4 +82,5 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
 {% endblock %}
