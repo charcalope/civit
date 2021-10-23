@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.urls import path
-from .forms import InitiativeForm
+from .forms import InitiativeForm, DonateForm
+from django.contrib.auth.decorators import login_required
 
-from .models import Initiative
+from .models import Initiative, Donation
 
 # Create your views here.
 def create(request):
@@ -26,6 +27,17 @@ def create(request):
 
             return redirect('viewinit', pk=new_initiative.pk)
 
+@login_required
 def view_public_init(request, pk):
     initiative = Initiative.objects.get(pk=pk)
-    return render(request, 'initiative/public_view_init.html', {'initiative': initiative})
+    if request.method == "GET":
+        return render(request, 'initiative/public_view_init.html', {'initiative': initiative, 'donate_form': DonateForm})
+    else:
+        form = DonateForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            new_donation = Donation(donor=request.user,
+                                        initiative=initiative,
+                                        amount=data['amount'])
+            new_donation.save()
+            return redirect('viewinit', pk=initiative.pk)

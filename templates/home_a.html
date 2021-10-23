@@ -5,12 +5,17 @@
         <h1>Welcome to the landing page.</h1>
         <a class="button is-light" href="{% url 'create' %}">Create Initiative</a>
         {% for init in initiatives %}
+        {% if forloop.counter0|divisibleby:2 %}
+        <div class="card" style="background-color:#D3D3D3">
+        {% else %}
         <div class="card">
+        {% endif %}
             <h2>{{ init.title }}</h2>
             <h3>Organizer: {{ init.primary_organizer }}</h3>
             <p>Problem Statement: {{ init.problem_statement }}</p>
             <p>People Impacted: {{ init.people_impact }}</p>
             <p>Date Created: {{ init.date_created }}</p>
+            <a class="button" href="{% url 'viewinit' init.pk %}">View/Donate</a>
         </div>
         {% endfor %}
     </div>

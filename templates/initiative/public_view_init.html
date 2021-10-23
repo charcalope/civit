@@ -11,6 +11,14 @@
             {% for tag in initiative.tags %}
                 <p>{{ tag }}</p>
             {% endfor %}
+            <p>Donation Total Amount: {{ initiative.totalDonations }}</p>
+            {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                {{ donate_form.as_p }}
+                <input type="submit" value="Submit Donation">
+            </form>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

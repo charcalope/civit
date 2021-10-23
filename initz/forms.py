@@ -20,3 +20,6 @@ class InitiativeForm(forms.Form):
     legislative_scope = forms.CharField(label='What do you propose we could do?', max_length=500)
     tags = forms.CharField(label='Tags', widget=forms.SelectMultiple(choices=TAGS))
     type = forms.CharField(label='Type of legislation', widget=forms.Select(choices=TYPE))
+
+class DonateForm(forms.Form):
+    amount = forms.IntegerField(label="Donate Amount")

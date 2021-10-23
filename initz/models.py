@@ -21,6 +21,13 @@ class Initiative(models.Model):
     sponsors = models.ManyToManyField(User, related_name='sponsors')
     organizers = models.ManyToManyField(User, related_name='organizers')
 
+    def totalDonations(self):
+        donations = Donation.objects.filter(initiative=self.pk)
+        sum = 0
+        for donation in donations:
+            sum += donation.amount
+        return sum
+
 # hello world
 class StatusUpdate(models.Model):
     initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
