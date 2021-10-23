@@ -1,5 +1,37 @@
 {% extends 'controlpanel/panelhome.html' %}
 
+{% block panel %}
+    <div class="box" style="border-radius: 7px; background-color: aliceblue">
+        <aside class="menu">
+          <ul class="menu-list">
+              <li><a href="{% url 'dashboardpanel' %}">Dashboard</a></li>
+          </ul>
+          <p class="menu-label">
+            Administration
+          </p>
+          <ul class="menu-list">
+            <li>
+              <a href="{% url 'manageorganizers' initiative.pk %}">Organizers</a>
+              <ul>
+                <li><a href="{% url 'vieworganizers' initiative.pk %}">View Organizers</a></li>
+                <li><a href="{% url 'addorganizers' initiative.pk %}">Add an Organizer</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="{% url 'expensepanel' initiative.pk %}">Manage Your Expenses</a>
+              <ul>
+                <li><a href="{% url 'expenserecords' initiative.pk %}">Expense Records</a></li>
+                <li><a href="{% url 'create_expense' initiative.pk %}">Create an Expense</a></li>
+              </ul>
+            </li>
+            <li><a class="is-active" href="{% url 'docspanel' initiative.pk %}">Documents</a></li>
+            <li><a href="{% url 'statuspanel' initiative.pk %}">Status Updates</a></li>
+            <li><a href="{% url 'meetingreqspanel' initiative.pk %}">Meeting Requests</a></li>
+          </ul>
+        </aside>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div>
         <h1>View Documents</h1>

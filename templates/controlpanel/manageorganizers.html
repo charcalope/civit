@@ -4,7 +4,7 @@
     <div class="box" style="border-radius: 7px; background-color: aliceblue">
         <aside class="menu">
           <ul class="menu-list">
-            <li><a>Dashboard</a></li>
+              <li><a href="{% url 'dashboardpanel' %}">Dashboard</a></li>
           </ul>
           <p class="menu-label">
             Administration
@@ -13,14 +13,14 @@
             <li>
               <a class="is-active" href="{% url 'manageorganizers' initiative.pk %}">Organizers</a>
               <ul>
-                <li><a>View Organizers</a></li>
-                <li><a>Add an Organizer</a></li>
+                <li><a href="{% url 'vieworganizers' initiative.pk %}">View Organizers</a></li>
+                <li><a href="{% url 'addorganizers' initiative.pk %}">Add an Organizer</a></li>
               </ul>
             </li>
             <li>
-              <a>Manage Your Expenses</a>
+              <a href="{% url 'expensepanel' initiative.pk %}">Manage Your Expenses</a>
               <ul>
-                <li><a >Expense Records</a></li>
+                <li><a href="{% url 'expensepanel' initiative.pk %}">Expense Records</a></li>
                 <li><a href="{% url 'create_expense' initiative.pk %}">Create an Expense</a></li>
               </ul>
             </li>
@@ -35,21 +35,8 @@
 {% block body %}
     <div>
         <div>
-            <h1>Manage Organizers</h1>
-            <form method="post">
-                {% csrf_token %}
-                <select name="user_select">
-                    {% for user in users %}
-                        <option value="{{ user.pk }}">{{ user }}</option>
-                    {% endfor %}
-                </select>
-                <input type="submit" value="Add">
-            </form>
-        </div>
-
-        <div>
             <div class="box" style="background-color: aliceblue">
-                <h1 class="title">Initiative Title</h1>
+                <h1 class="title">{{ initiative.title }}</h1>
             </div>
             <div class="box">
                 <h1 class="title">Organizers</h1>

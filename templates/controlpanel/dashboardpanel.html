@@ -1,0 +1,38 @@
+{% extends 'controlpanel/panelhome.html' %}
+
+{% block panel %}
+    <div class="box" style="border-radius: 7px; background-color: aliceblue">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li><a href="{% url 'dashboardpanel' %}">Dashboard</a></li>
+          </ul>
+        </aside>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="box">
+            <h1 class="title">Dashboard</h1>
+        </div>
+        <div class="box">
+            <h1 class="title">Initiatives you Organize</h1>
+            {% for init in organizer_inits %}
+                <div style="border: black 3px solid;  border-radius: 5px">
+                    <h3>{{ init.title }}</h3>
+                    <a href="{% url 'viewinit' init.pk %}">View</a>
+                    <a href="{% url 'manageorganizers' init.pk %}">Control Panel</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="box">
+            <h1>Initiatives you Support</h1>
+            {% for init in support_inits %}
+                <div style="border: black 3px solid;  border-radius: 5px">
+                    <h3>{{ init.title }}</h3>
+                    <a href="{% url 'viewinit' init.pk %}">View</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

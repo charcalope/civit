@@ -13,12 +13,12 @@
             <li>
               <a href="{% url 'manageorganizers' initiative.pk %}">Organizers</a>
               <ul>
-                <li><a href="{% url 'vieworganizers' initiative.pk %}">View Organizers</a></li>
+                <li><a class="is-active" href="{% url 'vieworganizers' initiative.pk %}">View Organizers</a></li>
                 <li><a href="{% url 'addorganizers' initiative.pk %}">Add an Organizer</a></li>
               </ul>
             </li>
             <li>
-              <a class="is-active" href="{% url 'expensepanel' initiative.pk %}">Manage Your Expenses</a>
+              <a href="{% url 'expensepanel' initiative.pk %}">Manage Your Expenses</a>
               <ul>
                 <li><a href="{% url 'expensepanel' initiative.pk %}">Expense Records</a></li>
                 <li><a href="{% url 'create_expense' initiative.pk %}">Create an Expense</a></li>
@@ -39,28 +39,40 @@
                 <h1 class="title">{{ initiative.title }}</h1>
             </div>
             <div class="box">
-                <h1 class="title">Expenses</h1>
+                <h1 class="title">Organizers</h1>
                 <table class="table is-fullwidth">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Reporter</th>
-                            <th>Title</th>
-                            <th>Amount</th>
-                            <th>Status</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>11/10/21</td>
-                            <td>Anastasia Spangler</td>
-                            <td>Gas Mileage to Olympia</td>
-                            <th>$65</th>
-                            <th>Approved</th>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    <tr>
+                            <td>Sarah</td>
+                            <td>Pickney</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    <tr>
+                            <td>Anastasia</td>
+                            <td>Spangler</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
+                        </tr>
+                    <tr>
+                            <td>Ted</td>
+                            <td>Petersen</td>
+                            <td><button class="button is-warning">Remove Organizer</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
     </div>
 {% endblock %}

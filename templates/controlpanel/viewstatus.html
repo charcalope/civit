@@ -34,25 +34,41 @@
 
 {% block body %}
     <div>
-        <h1>Create/Delete Status Updates</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Submit">
-            {% for status in initiative.getStatusUpdates %}
-            {% if forloop.counter0|divisibleby:2 %}
-            <div class="card" style="background-color:#D3D3D3">
-            {% else %}
-            <div class="card">
-            {% endif %}
-                <p>{{ status.text_content }}</p>
-                <p>Posted by: {{ status.poster }}</p>
-                <p>Date Created: {{ status.date_created }}</p>
-                {% if user.is_authenticated %}
-                <a class="button" href="{% url 'delete_status' initiative.pk status.pk %}" style="color:red">Delete</a>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </form>
+        <div class="box" style="background-color: aliceblue">
+            <h1 class="title">{{ initiative.title }}</h1>
+        </div>
+        <div class="box">
+            <h1 class="title">Create Status Update</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="box">
+            <h1 class="title">Manage Status Updates</h1>
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Poster</th>
+                        <th>Title</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                {% for status in initiative.getStatusUpdates %}
+                <tbody>
+                    <tr>
+                        <td>{{ status.date_created }}</td>
+                        <td>{{ status.poster }}</td>
+                        <td>{{ status.text_content }}</td>
+                        {% if user.is_authenticated %}
+                        <td><a class="button" href="{% url 'delete_status' initiative.pk status.pk %}" style="color:red">Delete</a></td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 {% endblock %}

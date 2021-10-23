@@ -146,6 +146,12 @@ def expenses_panel(request, pk):
     return render(request, 'controlpanel/viewexpenses.html', {'initiative': initiative})
 
 @login_required
+def expenserecords(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    return render(request, 'controlpanel/expenserecords.html', {'initiative': initiative})
+
+
+@login_required
 def docs_panel(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     documents = Document.objects.filter(initiative=initiative)
@@ -236,6 +242,51 @@ def manageorganizers(request, pk):
         initiative.organizers.add(user)
         return redirect(request.META.get('HTTP_REFERER'))
 
+@login_required
+def vieworganizers(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    if request.method == 'GET':
+        users = list(User.objects.all())
+        print(users)
+        organizers = []
+        organizers.extend(initiative.organizers.all())
+        organizers.append(initiative.primary_organizer)
+        print(organizers)
+        for user in users:
+            if user in organizers:
+                users.remove(user)
+        return render(request, 'controlpanel/vieworganizers.html', {'initiative': initiative,
+                                                                      'users': users})
+    else:
+        user_pk = request.POST.get('user_select')
+        user = User.objects.get(pk=user_pk)
+        initiative.organizers.add(user)
+        return redirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def addorganizers(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    if request.method == 'GET':
+        users = list(User.objects.all())
+        print(users)
+        organizers = []
+        organizers.extend(initiative.organizers.all())
+        organizers.append(initiative.primary_organizer)
+        print(organizers)
+        if users == organizers:
+            users=[]
+        else:
+            for user in users:
+                if user in organizers:
+                    users.remove(user)
+        return render(request, 'controlpanel/addorganizers.html', {'initiative': initiative,
+                                                                      'users': users})
+    else:
+        user_pk = request.POST.get('user_select')
+        user = User.objects.get(pk=user_pk)
+        initiative.organizers.add(user)
+        return redirect(request.META.get('HTTP_REFERER'))
+
 def create_document(request, pk):
     initiative = Initiative.objects.get(pk=pk)
     if request.method == 'GET':
@@ -254,6 +305,26 @@ def create_document(request, pk):
             new_document.save()
 
             return redirect('homepanel', initiative.pk)
+
+@login_required
+def dashboardpanel(request):
+    my_organizer_inits = set()
+    my_supporting_inits = set()
+
+    initiatives = Initiative.objects.all()
+
+    for init in initiatives:
+        if (init.primary_organizer == request.user) or (request.user in init.organizers.all()):
+            my_organizer_inits.add(init)
+        elif (request.user in init.supporters.all()):
+            my_supporting_inits.add(init)
+
+    my_organizer_inits = list(my_organizer_inits)
+    my_supporting_inits = list(my_supporting_inits)
+
+    return render(request, 'controlpanel/dashboardpanel.html', {'support_inits': my_supporting_inits,
+                                                   'organizer_inits': my_organizer_inits})
+
 
 @login_required
 def create_annotation(request, init_pk, doc_pk):

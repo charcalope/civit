@@ -3,60 +3,61 @@
 {% block content %}
     {% if not user.is_authenticated %}
     <div>
-        <div class="tile is-ancestor">
-            <div class="tile is-6 is-parent">
-                <article class="tile is-child">
-                    <p class="title">You can be a Leader</p>
-                    <a class="button is-large" href="{% url 'register' %}">JOIN NOW</a>
-                </article>
+        <div class="columns" style="margin-right: 30px">
+            <div class="column is-half">
+                <section class="hero is-medium">
+                  <div class="hero-body">
+                    <div class="container">
+                        <h1 style="font-size: 60pt">You can be a Leader.</h1>
+                        <a class="button is-large is-danger" style="margin-top: 50px; width: 50%" href="{% url 'register' %}">Join</a>
+                    </div>
+                  </div>
+                </section>
             </div>
-            <div class="tile is-parent is-vertical is-3">
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <figure class="image is-4by3">
-                            <img width="100%" src="https://pbs.twimg.com/profile_images/1351938473142448133/JQT93Cjo_400x400.jpg" alt=Placeholder>
-                        </figure>
-                        <p class="title">At the White house</p>
-                        <div class="content">
-                            <a>See the Update?</a>
-                        </div>
-                    </article>
+            <div class="column is-one-quarter" style="padding: 15px; padding-top: 60px">
+                <div style="background-color: #FFFF54; border-radius: 7px; height: 350px; margin-bottom: 30px">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" style="border-radius: 7px 7px 0px 0px">
+                    </div>
+                    <div style="padding: 15px; text-align: center">
+                        <h1 class="title">At the White House</h1>
+                        <a href="#">See the Status Update ></a>
+                    </div>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <h1 class="title">21st</h1>
-                        <div class="content">
-                            <a>Save the trees protest ></a>
-                        </div>
-                    </article>
+                <div style="background-color: #BF436C; border-radius: 7px; height: 150px; margin-bottom: 30px">
+                    <div style="text-align: center">
+                        <h1 style="font-size: 50pt; color: white">21st</h1>
+                        <h1 style="color: white">Save the Trees Protest</h1>
+                    </div>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <h1 class="title">Climate Change</h1>
-                    </article>
+                <div style="background-color: #FFFF54; border-radius: 7px; height: 50px">
+                    <div>
+                        <h1 class="title" style="text-align: center; padding-top: 5px">Climate Change</h1>
+                    </div>
                 </div>
             </div>
-            <div class="tile is-parent is-vertical is-3">
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <h1 class="title">Education</h1>
-                    </article>
+            <div class="column is-one-quarter" style="padding: 15px; padding-top: 60px">
+                <div style="background-color: #52AD93; border-radius: 7px; height: 50px; margin-bottom: 30px">
+                    <div>
+                        <h1 class="title" style="text-align: center; padding-top: 5px">Education</h1>
+                    </div>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <figure class="image is-4by3">
-                            <img width="100%" src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg" alt=Placeholder>
-                        </figure>
-                        <p class="title">New Funding Goal</p>
-                        <div class="content">
-                            <p>We've had so much momentum. Let's get 20 more districts covered.</p>
-                            <a>See the Update?</a>
+                <div style="background-color: #5CC4DB; border-radius: 7px; height: 525px; margin-bottom: 30px; box-shadow: 10px 10px">
+                    <div>
+                        <img src="https://images.ctfassets.net/hrltx12pl8hq/31f9j3A3xKasyUMMsuIQO8/6a8708add4cb4505b65b1cee3f2e6996/9db2e04eb42b427f4968ab41009443b906e4eabf-people_men-min.jpg?fit=fill&w=368&h=207" style="border-radius: 7px 7px 0px 0px">
+                    </div>
+                    <div style="text-align: center; padding: 10px">
+                        <h1 class="title">Fundraising Goal</h1>
+                        <h1>We've come so far in this initiative, and we can't stop now. Let's cover 20 more districts and fulfill the promise of a brighter future.</h1>
+                        <div style="margin: 10px; padding: 10px">
+                            <button class="button is-fullwidth is-light" style="margin-bottom: 10px">Sign</button>
+                            <button class="button is-fullwidth is-danger">Donate</button>
                         </div>
-                    </article>
+                    </div>
                 </div>
-
             </div>
         </div>
+
     </div>
     {% else %}
         <div class="columns">

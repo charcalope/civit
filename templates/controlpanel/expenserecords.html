@@ -18,9 +18,9 @@
               </ul>
             </li>
             <li>
-              <a class="is-active" href="{% url 'expensepanel' initiative.pk %}">Manage Your Expenses</a>
+              <a href="{% url 'expensepanel' initiative.pk %}">Manage Your Expenses</a>
               <ul>
-                <li><a href="{% url 'expensepanel' initiative.pk %}">Expense Records</a></li>
+                <li><a class="is-active" href="{% url 'expenserecords' initiative.pk %}">Expense Records</a></li>
                 <li><a href="{% url 'create_expense' initiative.pk %}">Create an Expense</a></li>
               </ul>
             </li>
