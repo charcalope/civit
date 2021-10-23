@@ -73,4 +73,6 @@ class Expense(models.Model):
     denied = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
 
+class Legislator(models.Model):
+
 register(Initiative)
