@@ -91,4 +91,24 @@ class MeetingRequest(models.Model):
     accepted = models.BooleanField(default=False)
     denied = models.BooleanField(default=False)
 
+class Document(models.Model):
+    initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
+    posting_organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=400)
+    doc_url = models.URLField()
+
+class Annotation(models.Model):
+    initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
+    annotating_organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+
+    document = models.ForeignKey(Document, on_delete=models.CASCADE)
+    excerpt = models.TextField()
+    comment = models.TextField()
+
 register(Initiative)

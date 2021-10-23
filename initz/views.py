@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.urls import path
-from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm
+from .forms import InitiativeForm, DonateForm, CreateExpenseForm, StatusUpdateForm, CreateDocumentForm
 from django.contrib.auth.decorators import login_required
 
-from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, MeetingRequest, Legislator
+from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, MeetingRequest, Legislator, Document
 
 # Create your views here.
 @login_required
@@ -197,3 +197,23 @@ def new_meeting_request_individual(request, init_pk, leg_pk):
     print("Email sent.")
 
     return redirect('meetingreqspanel', init_pk)
+
+@login_required
+def create_document(request, pk):
+    initiative = Initiative.objects.get(pk=pk)
+    if request.method == 'GET':
+        return render(request, 'controlpanel/create_document.html', {'initiative': initiative,
+                                                                     'form':CreateDocumentForm})
+    else:
+        form = CreateDocumentForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            new_document = Document(initiative=initiative,
+                                    posting_organizer=request.user,
+                                    doc_url=data['doc_url'],
+                                    title=data['doc_title'],
+                                    description=data['description'])
+            new_document.save()
+
+            return redirect('homepanel', initiative.pk)
