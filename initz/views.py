@@ -371,7 +371,6 @@ def create_annotation(request, init_pk, doc_pk):
                                         comment=data['comment'])
             new_annotation.save()
 
-<<<<<<< HEAD
             return redirect('homepanel', initiative.pk)
 
 @login_required
@@ -435,6 +434,3 @@ def edit_document(request, init_pk, doc_pk):
                                                                     'document': document,
                                                                     'text': text,
                                                                     'diff': diff})
-=======
-            return redirect('homepanel', initiative.pk)
->>>>>>> c3d91f0d70a57cf2dc5ccd03ad084398835a0b7b

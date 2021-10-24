@@ -4,6 +4,80 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="background-color: lightgrey; height: 1000px">
+    <div class="columns" style="padding: 50px">
+        <div class="column" style="padding: 20px">
+            <div class="box" style="background-color: cornflowerblue; height: 650px">
+                <div class="container">
+                    <div style="text-align: center">
+                        <img src="https://i.ibb.co/tLWxQ93/Pin-Clipart-com-white-house-clip-art-5206744.png" style="width: 35%">
+                    </div>
+                    <div style="color: white; text-align: center; margin-top: 25px">
+                        <p class="subtitle">The problem statement should do xy and z, but not a b and c.</p>
+                        <p class="subtitle">The people impact should do xy and z, but not a b and c.</p>
+                        <p class="subtitle">The legislative scope should do xy and z, but not a b and c.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="padding: 20px; margin-right: 30px">
+            <div class="box" style="height: 650px; padding: 40px">
+                <form>
+                    <div class="field">
+                      <label class="label">Initiative Title</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Title">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Problem Statement</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Problem Statement">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">People Impact</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Impact">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Legislative Scope</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Scope">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Jurisdiction</label>
+                      <div class="control">
+                        <div class="select">
+                          <select>
+                            <option>City</option>
+                            <option>State</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <button class="button is-link">Submit</button>
+                      </div>
+                      <div class="control">
+                        <button class="button is-link is-light">Cancel</button>
+                      </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <h2>Create Initiative</h2>
 
 <form method="post">
