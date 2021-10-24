@@ -18,6 +18,12 @@ git_repo = static('git/')
 from git import Repo, remote
 from unidiff import PatchSet
 
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template import Template
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+
 from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, \
     MeetingRequest, Legislator, Document, Annotation
 
@@ -230,8 +236,14 @@ def new_meeting_request_individual(request, init_pk, leg_pk):
                                                 legislator=legislator)
     new_meeting_request_object.save()
 
+    htmly = get_template('email/meeting_request_email.html')
+
     # TODO: email functionality
-    print("Email sent.")
+    subject, from_email, to = 'New Meeting Request', settings.EMAIL_HOST_USER, 'legislatorapp@gmail.com'
+    text_content = 'This is an important message.'
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(htmly.render(), "text/html")
+    msg.send()
 
     return redirect('meetingreqspanel', init_pk)
 
@@ -359,6 +371,7 @@ def create_annotation(request, init_pk, doc_pk):
                                         comment=data['comment'])
             new_annotation.save()
 
+<<<<<<< HEAD
             return redirect('homepanel', initiative.pk)
 
 @login_required
@@ -422,3 +435,6 @@ def edit_document(request, init_pk, doc_pk):
                                                                     'document': document,
                                                                     'text': text,
                                                                     'diff': diff})
+=======
+            return redirect('homepanel', initiative.pk)
+>>>>>>> c3d91f0d70a57cf2dc5ccd03ad084398835a0b7b

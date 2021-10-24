@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'initz.apps.InitzConfig',
-    'tagging'
+    'tagging',
+    'guides.apps.GuidesConfig',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "landing"
 LOGOUT_REDIRECT_URL = "landing"
 AUTH_USER_MODEL = 'accounts.User'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'legislatorapp@gmail.com'
+EMAIL_HOST_PASSWORD = 'zyvtod-Qopqoj-7fabne'
+
+
