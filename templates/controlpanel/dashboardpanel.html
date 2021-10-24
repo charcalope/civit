@@ -17,22 +17,46 @@
         </div>
         <div class="box">
             <h1 class="title">Initiatives you Organize</h1>
-            {% for init in organizer_inits %}
-                <div style="border: black 3px solid;  border-radius: 5px">
-                    <h3>{{ init.title }}</h3>
-                    <a href="{% url 'viewinit' init.pk %}">View</a>
-                    <a href="{% url 'manageorganizers' init.pk %}">Control Panel</a>
-                </div>
-            {% endfor %}
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>View</th>
+                        <th>Control Panel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for init in organizer_inits %}
+                    <tr>
+                        <td>{{ init.title }}</td>
+                        <td><a class="button" href="{% url 'viewinit' init.pk %}">View</a></td>
+                        <td><a class="button" href="{% url 'manageorganizers' init.pk %}">Control Panel</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
         </div>
         <div class="box">
-            <h1>Initiatives you Support</h1>
-            {% for init in support_inits %}
-                <div style="border: black 3px solid;  border-radius: 5px">
-                    <h3>{{ init.title }}</h3>
-                    <a href="{% url 'viewinit' init.pk %}">View</a>
-                </div>
-            {% endfor %}
+            <h1 class="title">Initiatives you Support</h1>
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>View</th>
+                        <th>Control Panel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for init in support_inits %}
+                    <tr>
+                        <td>{{ init.title }}</td>
+                        <td><a class="button" href="{% url 'viewinit' init.pk %}">View</a></td>
+                        <td><a class="button" href="{% url 'manageorganizers' init.pk %}">Control Panel</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

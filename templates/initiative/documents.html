@@ -6,6 +6,7 @@
                 <th>Poster</th>
                 <th>Title</th>
                 <th>Link</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,7 @@
                 <td>{{ doc.posting_organizer }}</td>
                 <td>{{ doc.title }}</td>
                 <td><a href="#">Link</a></td>
+                <td><a href="{% url 'edit_document' initiative.pk doc.pk %}">Edit</a></td>
             </tr>
         {% endfor %}
         </tbody>

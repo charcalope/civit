@@ -60,39 +60,87 @@
 
     </div>
     {% else %}
+    <div>
         <div class="columns">
-            <div class="column is-one-quarter">
-                 <div class="box" style="height: 550px; padding: 30px">
-                     <h1 class="subtitle">Filters</h1>
-                     <form method="get">
-                         <input type="checkbox" value="a" id="filter-category-a">
-                         <label for="filter-category-a">Category A</label>
-                         <br>
-                         <input type="checkbox" value="b" id="filter-category-b">
-                         <label for="filter-category-b">Category B</label>
-                         <br>
-                         <input type="checkbox" value="c" id="filter-category-c">
-                         <label for="filter-category-c">Category C</label>
-                         <br>
-                         <input type="checkbox" value="d" id="filter-category-d">
-                         <label for="filter-category-d">Category D</label>
-                         <br>
-                         <button type="submit" value="submit">Search</button>
-                     </form>
+            <div class="column is-one-fifth">
+                <div style="padding: 30px">
+                     <div class="box" style="height: 100%;">
+                         <h1 class="subtitle">Filters</h1>
+                         <form method="get">
+                             <label for="filter-category-a" class="checkbox">
+                                 <input type="checkbox" value="a" id="filter-category-a">
+                                 Traffic
+                             </label>
+                             <br>
+                             <label for="filter-category-a" class="checkbox">
+                                 <input type="checkbox" value="b" id="filter-category-b">
+                                 Education
+                             </label>
+                             <br>
+                             <label for="filter-category-a" class="checkbox">
+                                 <input type="checkbox" value="c" id="filter-category-c">
+                                 Law Enforcement
+                             </label>
+                             <br>
+                             <label for="filter-category-a" class="checkbox">
+                                 <input type="checkbox" value="c" id="filter-category-c">
+                                 Public Parks
+                             </label>
+                             <br>
+                             <button class="button" type="submit" value="submit">Search</button>
+                         </form>
+                     </div>
                  </div>
             </div>
             <div class="column">
                 <div style="padding: 30px">
-                    <div class="tile is-ancestor" style="flex-wrap:wrap">
-                        {% for init in initiatives %}
-                        <div class="tile is-3 is-parent">
-                            <a href="{% url 'viewinit' init.pk %}"><article class="tile is-child box">
-                                <p class="title">{{ init.title }}</p>
-                                <p class="subtitle">Organized by {{ init.primary_organizer }}</p>
-                                <p>{{ init.problem_statement }}</p>
-                            </article></a>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box" style="height:80%;">
+                                <a href="{% url 'viewinit' initiatives.0.pk %}"><article>
+                                    <p class="title">{{ initiatives.0.title }}</p>
+                                    <p class="subtitle">Organized by {{ initiatives.0.primary_organizer }}</p>
+                                    <p>{{ initiatives.0.problem_statement }}</p>
+                                </article></a>
+                            </div>
+                            <div class="box" style="height:80%;">
+                                <a href="{% url 'viewinit' initiatives.1.pk %}"><article>
+                                    <p class="title">{{ initiatives.1.title }}</p>
+                                    <p class="subtitle">Organized by {{ initiatives.1.primary_organizer }}</p>
+                                    <p>{{ initiatives.1.problem_statement }}</p>
+                                </article></a>
+                            </div>
                         </div>
-                        {% endfor %}
+
+                        <div class="column">
+                            <div class="box" style="height:80%;">
+                                <a href="{% url 'viewinit' initiatives.2.pk %}"><article>
+                                    <p class="title">{{ initiatives.2.title }}</p>
+                                    <p class="subtitle">Organized by {{ initiatives.2.primary_organizer }}</p>
+                                    <p>{{ initiatives.2.problem_statement }}</p>
+                                </article></a>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="box" style="height:80%;">
+                                <a href="{% url 'viewinit' initiatives.3.pk %}"><article>
+                                    <p class="title">{{ initiatives.3.title }}</p>
+                                    <p class="subtitle">Organized by {{ initiatives.3.primary_organizer }}</p>
+                                    <p>{{ initiatives.3.problem_statement }}</p>
+                                </article></a>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="box" style="height:80%;">
+                                <a href="{% url 'viewinit' initiatives.4.pk %}"><article>
+                                    <p class="title">{{ initiatives.4.title }}</p>
+                                    <p class="subtitle">Organized by {{ initiatives.4.primary_organizer }}</p>
+                                    <p>{{ initiatives.4.problem_statement }}</p>
+                                </article></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

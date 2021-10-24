@@ -1,0 +1,277 @@
+[33mcommit 0460a2958515f14492eadd858cb2b7b7a5110f6b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 6f021a0 8bc482b
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 16:55:05 2021 -0700
+
+    conflicts
+
+[33mcommit 6f021a05f438f3e64dd0fb7b7f84533046796cff[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 16:54:14 2021 -0700
+
+    Most of control panel stuff done
+
+[33mcommit 8bc482bb448a86548c7d279bfb86c3fc41702d05[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 16:18:24 2021 -0700
+
+    all buttons on pub init page working
+
+[33mcommit 9e980893d5fdb50a4df0793fec4f23bfd2a6f7fe[m
+Merge: c309427 0312852
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 15:40:16 2021 -0700
+
+    Merge branch 'main' of github.com:charcalope/civit into main
+
+[33mcommit 0312852ac7e754a196c15c00ef1e1044f3e3e391[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 15:39:55 2021 -0700
+
+    more mockups for public init page
+
+[33mcommit c3094271c9aee094b88df4fe03ddcba769153693[m
+Merge: 630d1c8 262c4d5
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 15:39:01 2021 -0700
+
+    Merge branch 'main' of github.com:charcalope/civit into main
+
+[33mcommit 630d1c8c866210e2ad5b024b3aec27f1b55632dd[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 15:38:51 2021 -0700
+
+    Some UI integration with control panel
+
+[33mcommit 262c4d57fefd83078eb05ab27a653bd70e698bb8[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 15:26:36 2021 -0700
+
+    more mockups for control panel
+
+[33mcommit e7d45d6ef2682e778716afd5d0b1c55d115b62e6[m
+Merge: 8621824 f0d16be
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 14:48:05 2021 -0700
+
+    Merge branch 'main' of github.com:charcalope/civit into main
+
+[33mcommit 86218240969c04392741958d418b3835d4e1aa71[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 14:48:01 2021 -0700
+
+    integrated mockup
+
+[33mcommit f0d16be9cc9de6bc926644d6174cbbdbf0f043e3[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 13:53:55 2021 -0700
+
+    mockup for control panel 1
+
+[33mcommit d3334de00d2aab89636abdc51889b54a61ce6968[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 13:30:53 2021 -0700
+
+    mockups for init directory and home page
+
+[33mcommit 972ea237537cf8b2f2e47d85ce1ffbb238ce1f82[m
+Merge: 592edf4 7cf8ed5
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 12:15:22 2021 -0700
+
+    Merge branch 'main' of github.com:charcalope/civit into main
+
+[33mcommit 592edf470368ee7437c68413a1bca4d092ec162a[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 12:15:17 2021 -0700
+
+    implemented tiles
+
+[33mcommit 7cf8ed5d3a5f67047c56fb4d8ada94e982f17702[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 12:12:57 2021 -0700
+
+    mockup 1
+
+[33mcommit 425394f9ce055ac9591e2258ee047344b83bbce3[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 11:19:02 2021 -0700
+
+    simple design for initiative page
+
+[33mcommit c4ca36352571f0d02caa629e8b4ba5dcd0edcaba[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 10:06:19 2021 -0700
+
+    preliminary qr code feature
+
+[33mcommit 214741e33b44d1bc0622c9cdbd85f93627b23cf6[m
+Merge: c85e743 449a9b0
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 09:52:39 2021 -0700
+
+    resolved conflicts
+
+[33mcommit c85e7437ff31f5cf70363f02e5a76bbe54be020f[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 09:50:36 2021 -0700
+
+    Manage organizers
+
+[33mcommit 449a9b0dbaacd7ca14f7d52b046d32d8b64ba17c[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 09:47:06 2021 -0700
+
+    annotation func
+
+[33mcommit 89a6680e52f0a5fe07d047bb2cbe8f7a8adb936b[m
+Merge: b82b108 2d31d49
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 09:20:14 2021 -0700
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit b82b108b0f44b981fc7031efe75fa8d7bbf84713[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 09:20:00 2021 -0700
+
+    add docs
+
+[33mcommit 2d31d49cd7969cf9f59554454574801132c1ba76[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 08:31:48 2021 -0700
+
+    Add view expenses and view status feed
+
+[33mcommit 42dc0e475a9a32ad23c8fa537c774e5e00a1023e[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 05:02:55 2021 -0700
+
+    meeting request functionality backend
+
+[33mcommit 3934973b1fd9b2a72249c321b7504c33c761af9a[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 02:09:35 2021 -0700
+
+    Implemented status creation and deletions in control panel
+
+[33mcommit f82e2a483fa01a8ef34bafaefbd102f6e9f9fb29[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 01:16:48 2021 -0700
+
+    meeting requests panel
+
+[33mcommit 0eef823a14fb47073708a9ad3bf65d0bd40c51cb[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 01:13:55 2021 -0700
+
+    fixed misdelete
+
+[33mcommit 1a6ef7fec46667da09767a3ebd2964c7380dea39[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 01:12:05 2021 -0700
+
+    added tabs for control panel
+
+[33mcommit 000fa8fe59e3ff64b6ffeb99374070ac76bf3d42[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 00:44:27 2021 -0700
+
+    skeleton 2 electric boogaloo
+
+[33mcommit 709f3b8b3cb9705aa8e7fb60ee9c81dea7a37473[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Sat Oct 23 00:22:46 2021 -0700
+
+    skeleton of control panel pages in backend
+
+[33mcommit 6d78fab1f545ec9939c9aaa0b351d1ec4fa7d892[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Sat Oct 23 00:12:34 2021 -0700
+
+    Finished tabs
+
+[33mcommit 1fc5d37cc02d5519b958f7ff0d518a998b949cba[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 23:37:07 2021 -0700
+
+    tab skeletons backend
+
+[33mcommit 75b804f402b94cec16810a73ae024ef4d075d74a[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 23:14:16 2021 -0700
+
+    control panel base
+
+[33mcommit 0c664e72c9541b0a7526b01cb2c3fb79df6333eb[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Fri Oct 22 22:43:48 2021 -0700
+
+    Added signature function
+
+[33mcommit 2f5267b58403d1dc346e61f66c64259e5c72a82a[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Fri Oct 22 22:03:14 2021 -0700
+
+    Added donation function
+
+[33mcommit 93ca419ce8819915c16c8aace7cacc1a7920100c[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Fri Oct 22 20:59:47 2021 -0700
+
+    changes
+
+[33mcommit f2f9283fe319a7f0cdde7455722ee6a8567a3269[m
+Merge: dc58a6b 41e026f
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Fri Oct 22 20:58:26 2021 -0700
+
+    resolved conflicts
+
+[33mcommit dc58a6bca0d4f18ed197e80b3e2cba0eaf027600[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Fri Oct 22 20:57:35 2021 -0700
+
+    initiatives view
+
+[33mcommit 41e026f5fa848ceddeda66dcbc83b1c7aa2052dd[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 20:44:19 2021 -0700
+
+    tagging fix and public init view page
+
+[33mcommit 162f0f01bac04755db46822f060297cc49d78cd8[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 20:26:01 2021 -0700
+
+    tagging functionality
+
+[33mcommit b7ce01ff351e32404c6361a33a417fff36693714[m
+Author: ygunarso <sgunarso21@gmail.com>
+Date:   Fri Oct 22 20:13:18 2021 -0700
+
+    frontend forms
+
+[33mcommit 6db46efce61e76276525acffe0a34aa5a8451ada[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 18:42:16 2021 -0700
+
+    Commit message
+
+[33mcommit dcf0fbbfae80614ca183cce7d38084081be2b5b2[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 18:17:00 2021 -0700
+
+    added comment
+
+[33mcommit fb4ea0d1c0ac0e51642d6352286dec4012c901fe[m
+Author: Steven Gunarso <47007053+ygunarso@users.noreply.github.com>
+Date:   Fri Oct 22 18:15:47 2021 -0700
+
+    Create README.md
+
+[33mcommit 873a4a225eedbedbaf1bc53f0aa992f7acb318b3[m
+Author: charcalope <47309188+charcalope@users.noreply.github.com>
+Date:   Fri Oct 22 18:11:06 2021 -0700
+
+    first commit

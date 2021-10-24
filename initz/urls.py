@@ -28,5 +28,6 @@ urlpatterns = [
     path('<init_pk>/<leg_pk>/create_req', views.new_meeting_request_individual, name='createreqind'),
     path('<pk>/create_doc', views.create_document, name='createdoc'),
     path('<init_pk>/<doc_pk>/create_annotation', views.create_annotation, name='createannotation'),
-
+    #documents
+    path('<init_pk>/<doc_pk>/edit_document', views.edit_document, name='edit_document'),
 ]

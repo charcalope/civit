@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div class="columns">
+            <div class="column">
+                <h1 class="title">Edit Document</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <textarea name="textarea" class="textarea" rows="20" placeholder="Begin your document...">{{ text }}</textarea>
+                    <input class="button" type="submit" value="Update Draft">
+                </form>
+            </div>
+            <div class="column">
+                <div class="markdown">
+                    {% load static %}
+                    <script type="text/javascript" charset="utf-8">var readme_location = "{% static 'git/README.md' %}"</script>
+                    <script src="{% static 'stmd.js' %}"></script>
+                    <script src="{% static 'render.js' %}"></script>
+                </div>
+            </div>
+        </div>
+        {% if diff %}
+        <div class="changes">
+            <p>Update Successful!</p>
+            <p>Additions: {{ diff.additions }}</p>
+            <p>Deletions: {{ diff.deletions }}</p>
+            <p>Changes: {{ diff.changes }}</p>
+            <p>Patch: {{ diff.patch }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -8,6 +8,15 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import qrcode
 from io import BytesIO
 import base64
+from django.templatetags.static import static
+import requests
+import json
+
+git_file = static('git/README.md')
+git_repo = static('git/')
+
+from git import Repo, remote
+from unidiff import PatchSet
 
 from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, \
     MeetingRequest, Legislator, Document, Annotation
@@ -351,3 +360,65 @@ def create_annotation(request, init_pk, doc_pk):
             new_annotation.save()
 
             return redirect('homepanel', initiative.pk)
+
+@login_required
+def edit_document(request, init_pk, doc_pk):
+    initiative = Initiative.objects.get(pk=init_pk)
+    document = Document.objects.get(pk=doc_pk)
+    # Repo.clone_from('https://github.com/ygunarso/civit-markdown-files.git', './static/git')
+    f = open(git_file, "r")
+    text = f.read()
+    return render(request, 'initiative/edit_document.html', {'initiative': initiative,
+                                                                'document': document,
+                                                                'text': text})
+
+def git_push():
+    try:
+        repo = Repo('./static/git')
+        repo.git.add(update=True)
+        repo.index.commit("Update version")
+        origin = repo.remote(name='origin')
+        origin.push()
+    except Exception as e:
+        print(e.__class__)
+
+def get_diff():
+    info = {}
+    try:
+        repo = Repo('./static/git')
+        commits_list = list(repo.iter_commits())
+        old = str(commits_list[-1])
+        print(old)
+        new = str(commits_list[0])
+        print(new)
+        response = requests.get('http://api.github.com/repos/ygunarso/civit-markdown-files/compare/%s...%s'%(old, new))
+        data = json.loads(response.text)
+        info = data['files'][0]
+    except Exception as e:
+        print(e.__class__)
+    # filename, status, additions, deletions, changes, patch
+    return info
+
+@login_required
+def edit_document(request, init_pk, doc_pk):
+    initiative = Initiative.objects.get(pk=init_pk)
+    document = Document.objects.get(pk=doc_pk)
+    # Repo.clone_from('https://github.com/ygunarso/civit-markdown-files.git', './static/git')
+    if request.method == 'GET':
+        f = open('./static/git/README.md', "r")
+        text = f.read()
+        f.close()
+        return render(request, 'initiative/edit_document.html', {'initiative': initiative,
+                                                                    'document': document,
+                                                                    'text': text,
+                                                                    'diff': {}})
+    else:
+        text = request.POST.get('textarea')
+        with open('./static/git/README.md', "w") as f:
+            f.write(text)
+        git_push()
+        diff = get_diff()
+        return render(request, 'initiative/edit_document.html', {'initiative': initiative,
+                                                                    'document': document,
+                                                                    'text': text,
+                                                                    'diff': diff})

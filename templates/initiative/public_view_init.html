@@ -6,29 +6,35 @@
             <div class="hero-body">
                 <div class="columns"/>
                     <div class="column is-two-thirds">
-                        <div class="block" style="margin-bottom: 50px">
+                        <div class="block" style="margin-bottom: 40px">
                             <h1 class="title">{{ initiative.title }}</h1>
                             <h1 class="subtitle">Started by <b>{{ initiative.primary_organizer.username }}</b></h1>
                             {# <img src="data:image\png;base64,{{ initiative.qrcode }}"> #}
                         </div>
-                        {# <p>{{ initiative.problem_statement }}</p>  #}
-                        <p>{{ initiative.people_impact }}</p>
-                        <p>{{ initiative.legislative_scope }}</p>
-                        <div class="tags">
-                        {% for tag in initiative.tags %}
-                            <span class="tag">{{ tag }}</span>
-                        {% endfor %}
+                        <div>
+                            <p class="subtitle" style="margin-bottom:5px;">Problem Statement</p>
+                            <p style="padding-bottom:30px;">{{ initiative.problem_statement }}</p>
+                            <p class="subtitle" style="margin-bottom:5px;">People Impacted</p>
+                            <p style="padding-bottom:30px;">{{ initiative.people_impact }}</p>
+                            <p class="subtitle" style="margin-bottom:5px;">Legislative Scope</p>
+                            <p style="padding-bottom:30px;">{{ initiative.legislative_scope }}</p>
+                            <div class="tags" style="padding: 10px 0 10px 2px">
+                            {% for tag in initiative.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                            </div>
                         </div>
+
                     </div>
                     <div class="column">
                         <div class="block">
-                            <form class="box" style="text-align: center" method="post">
+                            <form class="box" style="text-align: center;height:220px" method="post">
                               <div class="field">
-                                <label class="label">Donation Amount</label>
+                                <label class="label" style="margin-bottom:30px">Donation Amount</label>
                                 <div class="control">
                                     {% csrf_token %}
                                     {{ donate_form.as_p }}
-                                    <input class="button is-danger" type="submit" value="Submit Donation">
+                                    <input class="button is-danger" type="submit" value="Submit Donation" style="margin-top:30px">
                                 </div>
                               </div>
                             </form>
