@@ -17,11 +17,16 @@
                             <p class="subtitle" style="margin-bottom:5px;">People Impacted</p>
                             <p style="padding-bottom:30px;">{{ initiative.people_impact }}</p>
                             <p class="subtitle" style="margin-bottom:5px;">Legislative Scope</p>
-                            <p style="padding-bottom:30px;">{{ initiative.legislative_scope }}</p>
+                            {# <p style="padding-bottom:30px;">{{ initiative.legislative_scope }}</p> #}
+                            <p style="padding-bottom:30px;">By putting body cameras on police officers on duty, we will be able to increase transparency</p>
                             <div class="tags" style="padding: 10px 0 10px 2px">
-                            {% for tag in initiative.tags %}
-                                <span class="tag">{{ tag }}</span>
-                            {% endfor %}
+                            {# {% for tag in initiative.tags %} #}
+                                {# <span class="tag">{{ tag }}</span> #}
+                            {# {% endfor %} #}
+                                <span class="tag">Law</span>
+                                <span class="tag">Police</span>
+                                <span class="tag">Traffic</span>
+                                <span class="tag">Crime</span>
                             </div>
                         </div>
 
