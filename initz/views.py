@@ -8,6 +8,12 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import qrcode
 from io import BytesIO
 import base64
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template import Template
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+import requests
 
 from .models import Initiative, Donation, Expense, StatusUpdate, LegislatorGroup, \
     MeetingRequest, Legislator, Document, Annotation
@@ -221,8 +227,14 @@ def new_meeting_request_individual(request, init_pk, leg_pk):
                                                 legislator=legislator)
     new_meeting_request_object.save()
 
+    htmly = get_template('email/meeting_request_email.html')
+
     # TODO: email functionality
-    print("Email sent.")
+    subject, from_email, to = 'New Meeting Request', settings.EMAIL_HOST_USER, 'legislatorapp@gmail.com'
+    text_content = 'This is an important message.'
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(htmly.render(), "text/html")
+    msg.send()
 
     return redirect('meetingreqspanel', init_pk)
 
